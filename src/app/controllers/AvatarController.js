@@ -1,0 +1,15 @@
+import User from '../models/User';
+
+class AvatarController {
+  async store(req, res) {
+    const { filename } = req.file;
+
+    const user = await User.findByPk(req.userId);
+
+    const { avatar } = await user.update({ avatar: filename });
+
+    return res.json({ avatar });
+  }
+}
+
+export default new AvatarController();
