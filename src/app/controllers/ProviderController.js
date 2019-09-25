@@ -4,7 +4,7 @@ class ProviderController {
   async index(req, res) {
     const provider = await User.findAll({
       where: { provider: true },
-      attributes: ['id', 'name', 'email', 'avatar', 'avatar_url'],
+      attributes: ['id', 'name', 'email', 'avatar'],
     });
 
     return res.json(provider);

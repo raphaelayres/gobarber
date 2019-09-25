@@ -6,7 +6,9 @@ class AvatarController {
 
     const user = await User.findByPk(req.userId);
 
-    const { avatar } = await user.update({ avatar: filename });
+    const { avatar } = await user.update({
+      avatar: `${process.env.APP_URL}/users/avatar/${filename}`,
+    });
 
     return res.json({ avatar });
   }

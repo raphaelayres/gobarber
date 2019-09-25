@@ -11,14 +11,15 @@ class User extends Model {
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
         avatar: Sequelize.STRING,
-        avatar_url: {
-          type: Sequelize.VIRTUAL,
-          get() {
-            if (this.avatar)
-              return `${process.env.APP_URL}/users/avatar/${this.avatar}`;
-            return null;
-          },
-        },
+        // avatar_url: {
+        //   type: Sequelize.VIRTUAL,
+        //   get() {
+        //     if (this.avatar)
+        //       // return `${process.env.APP_URL}/users/avatar/${this.avatar}`;
+        //       return this.avatar;
+        //     return null;
+        //   },
+        // },
       },
       { sequelize }
     );

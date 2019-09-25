@@ -95,7 +95,7 @@ class AppointmentController {
         {
           model: User,
           as: 'provider',
-          attributes: ['id', 'name', 'avatar', 'avatar_url'],
+          attributes: ['id', 'name', 'avatar'],
         },
       ],
     });
@@ -141,7 +141,7 @@ class AppointmentController {
 
     appointment.canceled_at = new Date();
 
-    // await appointment.save();
+    await appointment.save();
 
     await Queue.add(CancellationMail.key, {
       appointment,
